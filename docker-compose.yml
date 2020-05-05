@@ -1,0 +1,17 @@
+version: '3'
+services:
+  fms:
+    build: .
+    ports:
+      - "8080:80"
+      - "8443:443"
+      - "5003:5003"
+      - "16000:16000"
+    stdin_open: true
+    tty: true
+    privileged: true
+    tmpfs:
+      - /run
+      - /run/lock
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
